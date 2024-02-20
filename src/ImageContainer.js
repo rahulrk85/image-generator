@@ -9,14 +9,14 @@ const ImageContainer = () => {
     const images = useSelector((store)=>store.images.images);
     if(images===null)return null;
     console.log(images);
+    
 
-    const getUrl=(item)=>{
-        return <img className='w-[400px] rounded-xl' alt='photos' src={item.cover_photo.urls.regular}/>;
-    }
-    images.map(getUrl);
+    
   return (
     <div className='flex flex-wrap m-8'>
-        
+      {
+        images.map(img=><img key={img.id} className='w-[300px]  m-6 rounded-xl' alt='photos' src={img.cover_photo.urls.regular}/>)
+      }
     </div>
   )
 }
