@@ -3,6 +3,7 @@ import './App.css';
 import ImageContainer from './ImageContainer';
 import Searchbox from './Searchbox';
 import appStore from './appStore';
+import Buttons from './Buttons';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Searchbox/>
       <ImageContainer/>
+      <Buttons/>
     </div>
     </Provider>
   );

@@ -15,7 +15,7 @@ const ImageContainer = () => {
   return (
     <div className='flex flex-wrap m-8'>
       {
-        images.map(img=><img key={img.id} className='w-[300px]  m-6 rounded-xl' alt='photos' src={img.cover_photo.urls.regular}/>)
+        images.map(img=><img key={img.id} className='w-[300px] m-6 rounded-xl' alt='photos' src={img.cover_photo.urls.regular}/>)
       }
     </div>
   )
