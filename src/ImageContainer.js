@@ -8,7 +8,6 @@ const ImageContainer = () => {
 
     const images = useSelector((store)=>store.images.images);
     if(images===null)return null;
-    console.log(images);
     
 
     

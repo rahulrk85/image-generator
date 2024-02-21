@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect} from 'react'
 import { CLIENT_ID } from './Constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addImages } from './imageSlice';
@@ -14,12 +14,15 @@ const useFetchImages = () => {
         const json = await data.json();
         if(json.results === null) return;
         dispatch(addImages(json.results));
+
         
     }
   
     useEffect(()=>{
         fetchData();
     },[]);
+
+    
 }
 
 export default useFetchImages
