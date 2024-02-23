@@ -1,20 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useFetchImages from './useFetchImages'
 import { useSelector } from 'react-redux';
+import { CLIENT_ID } from './Constants';
 
 const ImageContainer = () => {
 
+  const [Images,setImages] = useState(null);
+  const next = useSelector((store)=>store.images.next);
+
     useFetchImages();
 
-    const images = useSelector((store)=>store.images.images);
-    if(images===null)return null;
+    const fetchData=async()=>{
+      const data = await fetch("https://api.unsplash.com/search/collections?page="+{next}+"&per_page=50&query=office&"+CLIENT_ID);
+      const json = await data.json();
+      // console.log(json.results);
+      setImages(json.results);
+
+  }
+
+  useEffect(()=>{
+    fetchData();
+  },[]);
+
+    // const images = useSelector((store)=>store.images.images);
+    if(Images===null)return null;
     
 
+    
     
   return (
     <div className='flex flex-wrap m-8'>
       {
-        images.map(img=><img key={img.id} className='w-[300px] m-6 rounded-xl' alt='photos' src={img.cover_photo.urls.regular}/>)
+        Images.map(img=><img key={img.id} className='w-[300px] m-6 rounded-xl' alt='photos' src={img.cover_photo.urls.regular}/>)
       }
     </div>
   )
