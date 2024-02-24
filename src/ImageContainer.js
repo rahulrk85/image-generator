@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import useFetchImages from './useFetchImages'
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { CLIENT_ID } from './Constants';
 
-const ImageContainer = () => {
+const ImageContainer = ({Status}) => {
 
   const [Images,setImages] = useState(null);
-  const next = useSelector((store)=>store.images.next);
+  
+  // const next = useSelector((store)=>store.images.next);
 
     useFetchImages();
 
     const fetchData=async()=>{
-      const data = await fetch("https://api.unsplash.com/search/collections?page="+{next}+"&per_page=50&query=office&"+CLIENT_ID);
+      const data = await fetch("https://api.unsplash.com/search/collections?page="+{Status}+"&per_page=50&query=office&"+CLIENT_ID);
       const json = await data.json();
-      // console.log(json.results);
+      if(json==null) return null;
+      console.log(json.results);
       setImages(json.results);
 
   }

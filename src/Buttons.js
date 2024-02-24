@@ -2,11 +2,12 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { incrementNext } from './imageSlice';
 
-const Buttons = () => {
+const Buttons = ({Status,setStatus}) => {
     const dispatch = useDispatch();
 
     const handleNextBtn=()=>{
         dispatch(incrementNext());
+        setStatus(Status+1);
     }
   return (
     <div className='flex justify-center'>

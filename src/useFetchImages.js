@@ -1,9 +1,10 @@
-import { useEffect} from 'react'
+import { useEffect, useState} from 'react'
 import { CLIENT_ID } from './Constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addImages } from './imageSlice';
 
 const useFetchImages = () => {
+
     
     const next = useSelector((store)=>store.images.next);
 
